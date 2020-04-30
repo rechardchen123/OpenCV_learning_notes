@@ -15,4 +15,24 @@ The CLion is a cross-platform IDE and it provides lots of useful tools for easil
 >https://www.jianshu.com/p/362e880a59a8
 
 
+# Binary image process
+The binary imae process contains: threshold process, erosion and dilation, open and close operation, connected area analysis, contour operation and Blob detection.
+
+## threshold process
+
+
+## erosion and dilation
+
+## open and close operation 
+
+
+## connected area analysis 
+
+
+## contour operation 
+
+
+## Blob detection
+
+
 
