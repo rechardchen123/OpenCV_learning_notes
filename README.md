@@ -34,5 +34,11 @@ The binary imae process contains: threshold process, erosion and dilation, open 
 
 ## Blob detection
 
+# section5
 
+
+<<<<<<< HEAD
+=======
+
+>>>>>>> a4a4e0a2027428eb29bc1e500366a6eae3b508f6
 
