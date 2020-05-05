@@ -76,7 +76,7 @@ void cv::morphologyEx(
 )
 ```
 
-## connected area analysis(CCA)
+## Connected Area Analysis(CAA)
 The connected area analysis is to scan ervery pixel point in one image. The same pixel value and each connected point have the same label. For the whole image, all the same labels are bloging to one connected area. 
 `connectedComponents` is the function in the OpenCV to help us analise the image. 
 
