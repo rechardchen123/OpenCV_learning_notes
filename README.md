@@ -98,7 +98,24 @@ void cv::findContours(
 There are many functions for the contour operation such as calculating the area and perimeter, rect analysis and fitted circles and ellipses. 
 
 ## Blob detection
-Blob detection is a group of connected pixels in an image and they have some common attributes (such as the same pixel value). Blob detection is to label all the common attributes. `SimpleBlobDetector` is the function for blob detection. 
+Blob detection is a group of connected pixels in an image and they have some common attributes (such as the same pixel value). Blob detection is to label all the common attributes. `SimpleBlobDetector` is the function for blob detection.
+
+
+# image reinforcement and filter
+
+
+## color space 
+
+
+## color change 
+
+
+## image filter 
+
+
+## image smoothing 
+
+## image gradient 
 
 
 
