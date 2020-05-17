@@ -11,3 +11,5 @@ if(OpenCV_FOUND)
 else(OpenCV_FOUND)
     MESSAGE(FATAL_ERROR "OpenCV library not found")
 endif (OpenCV_FOUND)
+
+
