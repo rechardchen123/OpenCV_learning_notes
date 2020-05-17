@@ -3,7 +3,9 @@
 
 using namespace std;
 using namespace cv;
-void equalHSV(){
+
+void equalHSV()
+{
     Mat img = imread("../dark-flowers.jpg");
     imshow("input", img);
     // Convert to HSV color space
@@ -14,7 +16,8 @@ void equalHSV(){
     split(hsv, hsvChannels);
     vector<Mat> rgb;
     split(img, rgb);
-    for(int i = 0; i < rgb.size(); i++){
+    for (int i = 0; i < rgb.size(); i++)
+    {
         equalizeHist(rgb[i], rgb[i]);
     }
     equalizeHist(hsvChannels[2], hsvChannels[2]);
@@ -28,7 +31,8 @@ void equalHSV(){
     waitKey(0);
 }
 
-void CLAHE_function(){
+void CLAHE_function()
+{
     Mat img = imread("../night-sky.jpg");
     imshow("input", img);
     Mat hsv;
@@ -42,7 +46,7 @@ void CLAHE_function(){
     Mat dst_v;
     cvtColor(hsv, dst_v, COLOR_HSV2BGR);
     //CLAHE(Contrast Limited Adaptive Histogram Equalization)
-    auto clahe = createCLAHE(2.0, Size(8,8));
+    auto clahe = createCLAHE(2.0, Size(8, 8));
     vector<Mat> chsv;
     split(hsv, chsv);
     clahe->apply(chsv[2], chsv[2]);
@@ -53,32 +57,37 @@ void CLAHE_function(){
     waitKey(0);
 }
 
-void interpolation(uchar* lut, float* fullRange, float* Curve, float* originalValue){
-    for(int i = 0; i < 256; i++){
+void interpolation(uchar *lut, float *fullRange, float *Curve, float *originalValue)
+{
+    for (int i = 0; i < 256; i++)
+    {
         int j = 0;
         float a = fullRange[i];
-        while(a > originalValue[j]){
+        while (a > originalValue[j])
+        {
             j++;
         }
-        if(a == originalValue[j]){
+        if (a == originalValue[j])
+        {
             lut[i] = Curve[j];
             continue;
         }
-        float slope = ((float)(Curve[j] - Curve[j-1]))/(originalValue[j] - originalValue[j-1]);
-        float constant = Curve[j] - slope* originalValue[j];
+        float slope = ((float)(Curve[j] - Curve[j - 1])) / (originalValue[j] - originalValue[j - 1]);
+        float constant = Curve[j] - slope * originalValue[j];
         lut[i] = slope * fullRange[i] + constant;
     }
 }
 
-int main() {
+int main()
+{
     //equalHSV();
     //CLAHE_function();
     Mat Image = imread("../girl.jpg");
     //pivot points for x-coordinates
-    float originalValue[] = {0,50,100,150,200,255};
+    float originalValue[] = {0, 50, 100, 150, 200, 255};
     //change points on Y-axis for each channel
-    float rCurve[] = {0,80,150,190,220,255};
-    float bCurve[] = {0,20,40,75,150,255};
+    float rCurve[] = {0, 80, 150, 190, 220, 255};
+    float bCurve[] = {0, 20, 40, 75, 150, 255};
 
     //split the channels
     vector<Mat> channels(3);
@@ -86,11 +95,12 @@ int main() {
 
     //create a LookUp Table
     float fullRange[256];
-    for(int i = 0; i < 256; i++){
-        fullRange[i] = (float) i;
+    for (int i = 0; i < 256; i++)
+    {
+        fullRange[i] = (float)i;
     }
     Mat lookUpTable(1, 256, CV_8U);
-    uchar* lut = lookUpTable.ptr();
+    uchar *lut = lookUpTable.ptr();
     //apply inter[olation and create look up table
     interpolation(lut, fullRange, rCurve, originalValue);
 
