@@ -101,6 +101,26 @@ There are many functions for the contour operation such as calculating the area 
 ## 2.6. Blob detection
 Blob detection is a group of connected pixels in an image and they have some common attributes (such as the same pixel value). Blob detection is to label all the common attributes. `SimpleBlobDetector` is the function for blob detection.
 
+## 2.7 Summary 
+
+离散傅里叶变换：图像高频部分代表了图像的细节、纹理信息；低频代表了图像的轮廓信息。
+
+低通滤波 -> 模糊
+
+高通滤波 -> 锐化
+
+腐蚀和膨胀是针对白色部分（高亮部分）而言的。膨胀就是对图像高亮部分进行“领域扩张”，效果图拥有比原图更大的高亮区域；腐蚀是原图中的高亮区域被蚕食，效果图拥有比原图更小的高亮区域。
+
+开运算：先腐蚀再膨胀，用来消除小物体
+
+闭运算：先膨胀再腐蚀，用于排除小型黑洞
+
+形态学梯度：就是膨胀图与俯视图之差，用于保留物体的边缘轮廓。
+
+顶帽：原图像与开运算图之差，用于分离比邻近点亮一些的斑块。
+
+黑帽：闭运算与原图像之差，用于分离比邻近点暗一些的斑块。
+
 # Chapter 3. Image reinforcement and filter
 
 The image process is the most important in the OpenCV and this chapter, the color space of image, image filter and image gradient will be introduced. The key API will be presented below. 
