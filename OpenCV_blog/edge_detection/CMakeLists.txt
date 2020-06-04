@@ -1,12 +1,10 @@
 cmake_minimum_required(VERSION 3.16)
-project(image_filter)
+project(edge_detection)
 
 set(CMAKE_CXX_STANDARD 11)
 
-
-#add_executable(image_filter filter.cpp)
-add_executable(image_filter erosion_dilate.cpp)
+add_executable(edge_detection edge_detection.cpp)
 set(OpenCV_DIR C:/Users/ucesxc0/Downloads/opencv-4.2.0/minGW-build)
 find_package(OpenCV REQUIRED)
 include_directories(${OpenCV_INCLUDE_DIRS})
-TARGET_LINK_LIBRARIES(image_filter ${OpenCV_LIBS})
+TARGET_LINK_LIBRARIES(edge_detection ${OpenCV_LIBS})
