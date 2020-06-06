@@ -1,0 +1,15 @@
+cmake_minimum_required(VERSION 3.16)
+project(image)
+
+set(CMAKE_CXX_STANDARD 11)
+
+#add_executable(image image_init.cpp)
+#add_executable(image image_binary.cpp)
+#add_executable(image erosion.cpp)
+#add_executable(image mean_filter.cpp)
+#add_executable(image canny.cpp)
+add_executable(image common_data.cpp)
+set(OpenCV_DIR C:/Users/ucesxc0/Downloads/opencv-4.2.0/minGW-build)
+find_package(OpenCV REQUIRED)
+include_directories(${OpenCV_INCLUDE_DIRS})
+TARGET_LINK_LIBRARIES(image ${OpenCV_LIBS})
