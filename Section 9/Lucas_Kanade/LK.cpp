@@ -1,6 +1,8 @@
 /*
 Lucas_Kanade method is one of optic flow algorithms. It uses the image pyramid to calculate. 
-
+In order to realise the optical flow: there are two functions
+1. goodFeaturesToTrack: The function will produce the Shi Tomasi corner detection.
+2. calcOpticalFlowPyrLK: It is used to calculate the optical flow. 
 */
 #include <opencv2/imgproc.hpp>
 #include <opencv2/videoio.hpp>
@@ -31,7 +33,9 @@ int main()
     int width = cap.get(CAP_PROP_FRAME_WIDTH);
     int height = cap.get(CAP_PROP_FRAME_HEIGHT);
 
+    //save the file settings
     VideoWriter out("sparse-output.mp4", VideoWriter::fourcc('M', 'P', '4', 'V'), 20, Size(width, height));
+
 
     TermCriteria termcrit(TermCriteria::COUNT | TermCriteria::EPS, 10, 0.03);
 
@@ -126,6 +130,7 @@ int main()
         old_gray = frame_gray.clone();
         std::copy(new_points.begin(), new_points.end(), old_points.begin());
     }
+    waitKey(0);
     cap.release();
     out.release();
 
