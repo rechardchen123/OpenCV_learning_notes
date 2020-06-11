@@ -9,7 +9,7 @@ void inpaint( InputArray src, InputArray inpaintMask, OutputArray dst, double in
 第三个参数dst，输出的经过修复的图像；
 第四个参数inpaintRadius，修复算法取的邻域半径，用于计算当前像素点的差值；
 第五个参数flags，修复算法，有两种：INPAINT_NS 和I NPAINT_TELEA；
- */
+*/
 
 #include <opencv2/opencv.hpp>
 #include <iostream>
@@ -95,7 +95,6 @@ void global_repairing()
 
 int main()
 {
-
     //global repairing effect
     global_repairing();
 
