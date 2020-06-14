@@ -1,13 +1,23 @@
-cmake_minimum_required(VERSION 3.16)
+cmake_minimum_required(VERSION 3.13)
 project(section6)
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 14)
 
-#add_executable(section6 blemish.cpp)
-# add_executable(section6 filter.cpp)
-add_executable(section6 chroma_keying.cpp)
-set(OpenCV_DIR C:/Users/ucesxc0/Downloads/opencv-4.2.0/minGW-build)
+set(OpenCV_DIR /usr/local/share/opencv4)
+if(MSVC)
+SET(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /MT")
+endif()
+
 find_package(OpenCV REQUIRED)
 include_directories(${OpenCV_INCLUDE_DIRS})
-TARGET_LINK_LIBRARIES(section6 ${OpenCV_LIBS})
+MACRO(add_example name)
+    ADD_EXECUTABLE(${name} ${name}.cpp)
+    TARGET_LINK_LIBRARIES(${name} ${OpenCV_LIBS})
+ENDMACRO()
+
+add_example(blemish)
+add_example(chroma_keying)
+add_example(filter)
+
+
 
