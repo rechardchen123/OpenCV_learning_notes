@@ -16,5 +16,6 @@ MACRO(add_example name)
 ENDMACRO()
 
 add_example(skin_smooth_and_wear_glass)
+add_example(skin_smooth1)
 
 
